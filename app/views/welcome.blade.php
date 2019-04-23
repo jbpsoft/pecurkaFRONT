@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>   
+<head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{{ AdminOptions::base_url()}}css/alertify.core.css">
     <link rel="stylesheet" type="text/css" href="{{ AdminOptions::base_url()}}css/admin.css">
@@ -8,6 +8,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
      @include('partials/header')
 <style type="text/css">
+
+  body{
+  background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  background: linear-gradient(to right, #2C5364, #203A43, #0F2027);
+  }
+
   .modal-header {
     padding:9px 15px;
     border-bottom:4px solid #cccccc;
@@ -29,9 +35,19 @@
     -moz-border-radius-bottomleft: 6px;
     -moz-border-radius-bottomright: 6px;
   }
+
+  .LogoF{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+  }
+
 </style>
 </head>
 <body>
+
+
 
   @if(null === Session::get('brojac'))
   <?php Session::put('brojac', 1) ?>
@@ -47,16 +63,16 @@
           </div>
         </div>
       </div>
-    </div> 
-  @endif  
+    </div>
+  @endif
   @include ('menu')
   <script type="text/javascript">
       $('#overlay').modal('show');
       setTimeout(function() {
             $('#overlay').modal('hide');
-      }, 4000); 
+      }, 4000);
   </script>
-  
- 
+
+
 </body>
 </html>

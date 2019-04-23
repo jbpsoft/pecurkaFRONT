@@ -25,6 +25,7 @@ body {
     padding: 0
     clear: both;
     float:left;
+
 }
 @media only screen and (min-width: 1200px) {
     .container {
