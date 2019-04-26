@@ -1,51 +1,61 @@
-<?php if(!isset($_POST['idBroj'])){
-        $x = 1;
-      } 
-      else{
-        $x=$_POST['idBroj'];
-      } 
-?>
+<style type="text/css">
+  select{
+    position: relative; left: 32px;
+    width: 363px;
+  }
+  .form-group{
+    height: 28px;
+  }
+  .form-control .invoice-amt{
+    padding: 1px;
+  }
+  .row {
+  margin-right: -15px;
+  margin-left: -15px;
+  }
+</style>
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
       <h4 class="modal-title">{{ AdminOptions::lang(83, Session::get('jezik.AdminOptions::server()')) }}</h4>
     </div>
-    <form action="/admin-update-buyer" name="AzuriranjeKupca" method="POST" >
+    <form action="{{ AdminOptions::base_url() }}admin-update-buyer/{{ $data->id }}" method="POST" >
       <div class="modal-body" id="orderDetails">
         <div class="form-group row">
+
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(84, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm invoice-amt" placeholder="{{ Buyers::kupac($x)->naziv }}" name="NoviKupac">
+            <input type="text" class="form-control input-sm invoice-amt" placeholder="{{ $data->naziv }}" name="naziv">
           </div>       
         </div>
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(54, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm cheque-amt" name="Grad" autocomplete="off">
+            <input type="text" class="form-control input-sm cheque-amt" placeholder="{{ $data->grad }}" name="grad" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(55, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm cheque-amt" name="Ulica" autocomplete="off">
+            <input type="text" class="form-control input-sm cheque-amt" placeholder="{{ $data->ulica }}" name="ulica" autocomplete="off">
           </div>
         </div>        
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(56, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm" name="Broj" autocomplete="off">
+            <input type="text" class="form-control input-sm" placeholder="{{ $data->broj }}" name="broj" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(86, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm" name="Pib" autocomplete="off">
+            <input type="text" class="form-control input-sm" placeholder="{{ $data->PIB }}" name="PIB" autocomplete="off">
           </div>
         </div>
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(85, Session::get('jezik.AdminOptions::server()')) }}</label>
           <div class="col-sm-8">
-            <input type="text" class="form-control input-sm" name="Racun" autocomplete="off">
+            <input type="text" class="form-control input-sm" placeholder="{{ $data->racun }}" name="racun" autocomplete="off">
           </div>
         </div>
       </div>

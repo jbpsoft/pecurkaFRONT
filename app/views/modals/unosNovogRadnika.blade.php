@@ -9,7 +9,7 @@
     <div class="modal-header">
       <h4 class="modal-title">{{ AdminOptions::lang(6, Session::get('jezik.AdminOptions::server()')) }}</h4>
     </div>
-    <form action='/admin-save-worker' name="UnosNovogRadnika" method="post">
+    <form action='{{ AdminOptions::base_url() }}admin-save-worker' name="UnosNovogRadnika" method="post">
       <div class="modal-body">
         <div class="form-group row">
           <label class="col-sm-4 control-label">{{ AdminOptions::lang(52, Session::get('jezik.AdminOptions::server()')) }}</label>

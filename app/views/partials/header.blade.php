@@ -10,6 +10,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" href="{{ AdminOptions::base_url()}}css/alertify.core.css">
     <link rel="stylesheet" href="{{ AdminOptions::base_url()}}css/alertify.default.css">
+    <link rel="stylesheet" href="{{ AdminOptions::base_url()}}js/alertify.js">
     <link href="{{ AdminOptions::base_url()}}css/admin.css" rel="stylesheet" type="text/css" />
     <script src="{{ AdminOptions::base_url()}}js/alertify.js" type="text/javascript"></script>    
 	<link rel='stylesheet' href='http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css'>

@@ -1,5 +1,6 @@
-<script src="{{ AdminOptions::base_url()}}js/bootbox/bootbox.js" type="text/javascript"></script>  
-  @if (Session::has('success'))   
+
+  @if (Session::has('success'))  
+  <script src="{{ AdminOptions::base_url()}}js/bootbox/bootbox.js" type="text/javascript"></script>   
     <script type="text/javascript">
       bootbox.alert("<?php echo Session::get('success'); ?>");
     </script> 
@@ -23,9 +24,19 @@
       $("#azuriranje-kupac").modal('show');
     });
 
+    $(".noviProizvod").on("click", function() {
+      $("#novi-proizvod").modal('show');
+    });
+
     $(".noviKupac").on("click", function() {
       $("#novi-kupac").modal('show');
     }); 
+
+    $(".novaGrupaProizvoda").on("click", function() {
+      $("#nova-grupa-proizvoda").modal('show');
+    }); 
+    
+
   });
 </script>
 <div id="container">  
@@ -48,31 +59,53 @@
       </a>
         <ul>
         	<li>
-            <a href="#" class="novaStavka" aria-hidden="true">
-                <i class="fa fa-edit"></i>
+            <a href="#" class="novaStavka" >
+                <i class="fa fa-edit" aria-hidden="true"></i>
                 <b>{{ AdminOptions::lang(14, Session::get('jezik.AdminOptions::server()')) }}</b>
             </a>
           </li>
         	<li>
-            <a href="{{ AdminOptions::base_url() }}admin-mala" ><i class="fa fa-eye"></i>{{ AdminOptions::lang(15, Session::get('jezik.AdminOptions::server()')) }}
+            <a href="{{ AdminOptions::base_url() }}workers2" ><i class="fa fa-eye"></i>{{ AdminOptions::lang(15, Session::get('jezik.AdminOptions::server()')) }}
             </a>
           </li>
         </ul>
     </li>
     <!-- Proizvodnja -->        
     <li>
-      <a href="">
+      <a href="#">
         <i class="fa fa-money"></i>
         <strong>{{ AdminOptions::lang(5, Session::get('jezik.AdminOptions::server()')) }}</strong>
         <small>{{ AdminOptions::lang(5, Session::get('jezik.AdminOptions::server()')) }}</small>
       </a>
       	<ul>
-        	<li><a href="#"><i class="fa fa-edit"></i><b>{{ AdminOptions::lang(26, Session::get('jezik.AdminOptions::server()')) }}</b></a>
+        	<li>
+            <a href="#" class="noviProizvod">
+              <i class="fa fa-edit"  aria-hidden="true"></i>
+              <b>{{ AdminOptions::lang(27, Session::get('jezik.AdminOptions::server()')) }}</b>
+            </a>
         		<ul>
-        			<li><a href="#"><i class="fa fa-edit"></i>{{ AdminOptions::lang(27, Session::get('jezik.AdminOptions::server()')) }}</a>
+        			<li>
+                <a href="#" class="novaGrupaProizvoda">
+                  <i class="fa fa-edit"></i>
+                  {{ AdminOptions::lang(26, Session::get('jezik.AdminOptions::server()')) }}
+                </a>
+              </li>               
         		</ul>
         	</li>
-        	<li><a href="#" data-toggle="modal" data-target="#modalCart"><i class="fa fa-eye"></i>{{ AdminOptions::lang(28, Session::get('jezik.AdminOptions::server()')) }}</a></li>
+        	<li>
+            <a href="/admin-list-items">
+              <i class="fa fa-eye"></i>
+              <b>{{ AdminOptions::lang(28, Session::get('jezik.AdminOptions::server()')) }}</b>
+            </a>
+            <ul>
+              <li>
+                <a href="/admin-list-group">
+                  <i class="fa fa-eye"></i>
+                  {{ AdminOptions::lang(97, Session::get('jezik.AdminOptions::server()')) }}
+                </a>
+              </li>
+            </ul>
+          </li>
       </ul>
     </li>
     <!-- Prodaja -->
@@ -138,7 +171,7 @@
             </a>
           </li>
           <li>
-            <a href="/test" class="azuriranjeKupac1" aria-hidden="true"><i class="fa fa-male"></i>{{ AdminOptions::lang(83, Session::get('jezik.AdminOptions::server()')) }}</a>
+            <a href="{{ AdminOptions::base_url() }}workers3" aria-hidden="true"><i class="fa fa-male"></i>{{ AdminOptions::lang(83, Session::get('jezik.AdminOptions::server()')) }}</a>
           </li>
         </ul>
       </li>
@@ -192,13 +225,17 @@
   @include('modals/unosNoveStavke')
 </div>  
 
-<!--- MODAL AZURIRANJE KUPCA --->
-<div id="azuriranje-kupac" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" style="display: none;" aria-hidden="true">
-  @include('modals/azuriranjeKupac')
-</div>
-
 <!--- MODAL UNOS KUPCA --->
 <div id="novi-kupac" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" style="display: none;" aria-hidden="true">
   @include('modals/unosNovogKupca')
 </div>
- 
+
+<!--- MODAL UNOS GRUPE PROIZVODA --->
+<div id="nova-grupa-proizvoda" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" style="display: none;" aria-hidden="true">
+  @include('modals/unosNoveGrupeProizvoda')
+</div>
+
+<!--- MODAL UNOS NOVOG PROIZVODA --->
+<div id="novi-proizvod" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="static" data-keyboard="false" style="display: none;" aria-hidden="true">
+  @include('modals/unosNovogProizvoda')
+</div>
