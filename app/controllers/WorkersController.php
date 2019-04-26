@@ -35,7 +35,7 @@ class WorkersController extends \BaseController {
 	}
 
 
-	public function storeWorker($id=0)
+	public function storeWorker()
 	{
 		$data = new Worker;
 		$data->ime = Input::get('ime');
@@ -51,7 +51,9 @@ class WorkersController extends \BaseController {
 		$data->rola = Input::get('rola');
 		$data->save();
 
-		return View::make("workers", array('data'=>$data, 'pom'=>4));
+
+		Session::flash('success', AdminOptions::lang(88, Session::get("jezik.AdminOptions::server()"))); 
+		return View::make("workers", array('pom'=>4));
 
 	}
 
@@ -85,8 +87,8 @@ class WorkersController extends \BaseController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
-	{
+	public function update($id){
+
 		$data = Worker::find($id);
 		if ($_POST['ime']) {
 			$data->ime = $_POST['ime'];
@@ -119,35 +121,37 @@ class WorkersController extends \BaseController {
 			$data->status = $_POST['status'];
 		}
 		$data->update();
-		return View::make('workers', array('pom' => 3));
+		Session::flash('success', AdminOptions::lang(89, Session::get("jezik.AdminOptions::server()")));
+		return View::make('workers', array('pom' => 4));
 	}
 
-	public function finding($id)
-	{
+	public function finding($id){
+
 		$data = Worker::find($id);		
-		return View::make("workers", array('data'=> $data, 'pom' => 3));
+		return View::make("workers", array('data'=> $data, 'pom' => 4));
 	}
 
 
 	public function destroy($id)
 	{
 		$worker = Worker::find($id)->delete();
-		return View::make('workers', array('pom' => 3));
+		Session::flash('success', AdminOptions::lang(90, Session::get("jezik.AdminOptions::server()")));	
+		return View::make('workers', array('pom' => 4));
 	}
 
 	public function workers()
 	{
-		return View::make('workers', array('pom' => 4));
+		return View::make('workers');
 	}
 
 	public function workers1()
 	{
-		return View::make('workers', array('pom' => 3));
+		return View::make('workers', array('pom' => 4));
 	}
 
 	public function workers2()
 	{
-		return View::make('workers', array('pom' => 5));
+		return View::make('workers', array('pom' => 3));
 	}
 
 	public function workers3()

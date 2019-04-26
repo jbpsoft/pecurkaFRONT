@@ -15,42 +15,35 @@ class HomeController extends BaseController {
 	|
 	*/
 
-	public function live()
-	{
+	public function live(){
 		return Redirect::to("AdminOptions::findSession('firma', 'web_sajt')");
 	}
 
-	public function showWelcome()
-	{        
+	public function showWelcome(){        
         Session::forget('jezik.AdminOptions::server()');
         Session::forget('log_sesija.AdminOptions::server()');
         Session::forget('brojac');
     	return View::make('login');
 	}
 
-	public function preWelcome()
-	{        	
+	public function preWelcome(){        	
 		Session::put('jezik.AdminOptions::server()', $_POST['jezik']);
 		return View::make('login');
 	}
 
-	public function welcome()
-	{
+	public function welcome(){
 		return View::make('welcome');
 	}
 
-	public function litleTable()
-	{
+	public function litleTable(){
 		return View::make('litleTable');
 	}
 
-	public function bigTable()
-	{
+	public function bigTable(){
 		return View::make('bigTable');
 	}
 
-	public function test()
-	{
+	public function test(){
 		return View::make('test');
 	}
 

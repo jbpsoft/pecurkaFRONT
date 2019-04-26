@@ -2,33 +2,16 @@
 
 class CrudController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		//
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		//
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function store()
 	{
 		$data = new Ulazna_stavka;
@@ -39,42 +22,21 @@ class CrudController extends \BaseController {
 		$data->ulazna_stavka_dobavljac = Input::get('Dobavljac');
 		$data->save();
 
-		return Redirect::to("/admin-mala");
+		Session::flash('success', AdminOptions::lang(94, Session::get("jezik.AdminOptions::server()")));
+		return View::make("workers", array('pom' => 3));
 
 	}
 
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show($id)
 	{
 		//
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		
 	}
 
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function update($id)
 	{
 		$data = Ulazna_stavka::find($id);
@@ -95,28 +57,21 @@ class CrudController extends \BaseController {
 		}
 		$data->update();
 
-		return View::make('litleTable');
+		Session::flash('success', AdminOptions::lang(95, Session::get("jezik.AdminOptions::server()")));
+		return View::make("workers", array('pom' => 3));
 	}
 
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{	
+	public function destroy($id){	
 		$item = DB::table('ulazna_stavka')->where('ulazna_stavka_id', $id)->delete();
-		return View::make('litleTable');
+
+		Session::flash('success', AdminOptions::lang(96, Session::get("jezik.AdminOptions::server()")));
+		return View::make('workers', array('pom' => 3 ));
 	}
 
 	public function finding($id)
 	{
 		$data = Ulazna_stavka::find($id);		
-		return View::make("litleTable", array('data'=> $data, 'pom' => 0));
+		return View::make("workers", array('data'=> $data, 'pom' => 3));
 	}
-
-
 
 }
