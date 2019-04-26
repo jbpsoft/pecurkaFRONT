@@ -2,33 +2,16 @@
 
 class BuyersController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
 		//
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
 	public function create()
 	{
 		//
 	}
 
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
 	public function newBuyer(){
 		$data = new Buyers;
 		$data->naziv = $_POST['NoviKupac'];
@@ -41,56 +24,58 @@ class BuyersController extends \BaseController {
 		$data->kupac_id = $data->id;
 		$data->update();
 	      	
-			Session::flash('success', 'Uspešno ste izvršili unos novog kupca!');
-	      	return Redirect::to('/admin-welcome');
+		Session::flash('success', AdminOptions::lang(93, Session::get("jezik.AdminOptions::server()")));
+	    return View::make('workers', array('pom' => 6));
 	}
 
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function show($id=1){
 		
 		return View::make('listOfBuyers');
 	}
 
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
 	public function edit($id)
 	{
 		//
 	}
 
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function updateBuyer($id)
-	{
-		//
+	public function updateBuyer($id){
+		
+		$data = Buyers::find($id);
+		if ($_POST['naziv']) {
+			$data->naziv = $_POST['naziv'];
+		}
+		if ($_POST['grad']) {
+			$data->grad = $_POST['grad'];
+		}
+		if ($_POST['ulica']) {
+			$data->ulica = $_POST['ulica'];
+		}
+		if ($_POST['broj']) {
+			$data->broj = $_POST['broj'];
+		}
+		if ($_POST['PIB']) {
+			$data->PIB = $_POST['PIB'];
+		}		
+		if ($_POST['racun']) {
+			$data->racun = $_POST['racun'];
+		}		
+		
+		$data->update();
+		Session::flash('success', AdminOptions::lang(92, Session::get("jezik.AdminOptions::server()")));
+		return View::make('workers', array('pom' => 6));
 	}
 
+	public function findBuyer($id){
 
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		$data = Buyers::find($id);		
+		return View::make("workers", array('data'=> $data, 'pom' => 6));
+	}
+
+	public function deleteBuyer($id){
+		
+		$buyer = Buyers::find($id)->delete();
+		Session::flash('success', AdminOptions::lang(91, Session::get("jezik.AdminOptions::server()")));
+		return View::make('workers', array('pom' => 6));
 	}
 
 

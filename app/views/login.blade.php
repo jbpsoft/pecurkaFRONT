@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		@extends('partials/header')
+		@include('partials/header')
 		<link href="{{ AdminOptions::base_url()}}css/foundation.min.css" rel="stylesheet" type="text/css" />
 		<link href="{{ AdminOptions::base_url()}}css/admin.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -44,7 +44,7 @@
 		<div class="login-form-wrapper">
 			<div class="login-form-wrapper__box">
 				<div class="form-avatar">
-					<a class="logo" href="https:/www.google.com" title="JBPSoft"><img src="{{ AdminOptions::base_url()}}images\logoJBP.png" alt="JBPSoft"></a>
+					<a class="logo" href="https:/www.google.com" title="JBPSoft"><img src="{{ AdminOptions::base_url()}}images\Logo1.png" alt="JBPSoft"></a>
 				</div>
 				<form action="{{ AdminOptions::base_url() }}admin-login-store" method="post" class="" autocomplete="off">
 					<?php if (Session::get('jezik.AdminOptions::server()')) {?>
